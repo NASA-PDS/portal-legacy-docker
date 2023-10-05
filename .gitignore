@@ -1,0 +1,2 @@
+apache/var/log/*
+!apache/var/log/.gitkeep
