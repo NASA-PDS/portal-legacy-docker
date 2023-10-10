@@ -22,7 +22,7 @@ login-apache: ## Open terminal window using apache container
 	docker exec -it $(APACHE_CONTAINER_NAME) /bin/bash
 
 open: ## open default browser to login selection interface
-	open https://localhost/
+	open http://localhost/
 
 remove-containers:  ## Remove all containers related to this project.
 	docker container ls --all | awk '{print $$2}' | grep "$(NAME_PREFIX)" | xargs -I {} docker rm -f {}
@@ -40,7 +40,7 @@ start:	## Starts up the application using Docker Compose
 	docker-compose up $(RUN_OPTIONS)
 
 start-detached: RUN_OPTIONS = "-d" ## Starts up the application with Docker Compose in detached mode
-start-detached: start
+start-detached: start open
 
 stop:	## Stops all running services
 	docker-compose stop
