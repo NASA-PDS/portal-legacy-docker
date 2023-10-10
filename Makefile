@@ -22,7 +22,7 @@ login-apache: ## Open terminal window using apache container
 	docker exec -it $(APACHE_CONTAINER_NAME) /bin/bash
 
 open: ## open default browser to login selection interface
-	open http://localhost/
+	open http://localhost.jpl.nasa.gov/
 
 remove-containers:  ## Remove all containers related to this project.
 	docker container ls --all | awk '{print $$2}' | grep "$(NAME_PREFIX)" | xargs -I {} docker rm -f {}
