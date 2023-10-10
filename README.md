@@ -1,4 +1,4 @@
-# PDS Portal Repo
+# PDS — Containerized Portal Legacy Repository
 
 This repo contains a docker configuration that will allow you to run an apache container using Docker Desktop on your machine to test the contents of the [portal-legacy repo](https://github.com/NASA-PDS/portal-legacy/).
 
