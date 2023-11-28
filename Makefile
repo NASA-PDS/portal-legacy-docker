@@ -9,6 +9,11 @@ build-images:	## Builds application for Docker Compose
 build-images-nocache:	## Builds application for Docker Compose without the cache
 	docker-compose build --no-cache
 
+# This recipe assumes the wds-react-legacy and portal-legacy-docker repos are cloned at the same level
+# in your local filesystem to test the relavent javascript builds.
+copy-js-files:
+	cp ../wds-react-legacy-clean/embedbuild/index.js* ./apache/var/www/portal-legacy/tools/doi/pds-wds/
+
 destroy:	## Stops running app locally and removes Docker container images requiring a rebuild
 	docker-compose down --rmi all
 
@@ -23,6 +28,9 @@ login-apache: ## Open terminal window using apache container
 
 open: ## open default browser to login selection interface
 	open http://localhost.jpl.nasa.gov/
+
+pull-submodules: ## pull down latest git submodules code
+	git submodule update --recursive --remote
 
 remove-containers:  ## Remove all containers related to this project.
 	docker container ls --all | awk '{print $$2}' | grep "$(NAME_PREFIX)" | xargs -I {} docker rm -f {}
